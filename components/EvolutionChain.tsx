@@ -18,7 +18,13 @@ const POKEMON_EVOLUTION_LINE_QUERY = gql`
     }
   }
 `;
-export default function EvolutionChain({ id }) {
+interface pokemon{
+  id: number
+  name: string
+  evolves_from_species_id: number | null
+  is_baby: boolean
+}
+export default function EvolutionChain({ id }: {id: number}) {
   const { data, error, loading } = useQuery(POKEMON_EVOLUTION_LINE_QUERY, {
     variables: { id: id },
   });
@@ -28,8 +34,9 @@ export default function EvolutionChain({ id }) {
   const { pokemons } = data?.pokemon[0]?.specy?.evolutionChain;
   return (
     <div>
-      {pokemons.map((pokemon) => (
+      {pokemons.map((pokemon: pokemon) => (
         <>
+        {console.log(pokemon)}
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
             width="100"

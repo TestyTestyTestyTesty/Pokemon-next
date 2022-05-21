@@ -25,7 +25,7 @@ export default function Pokemon() {
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;  
-  if (data.pokemons.length !== 0) return <PokemonList data={data} />;
+  if (data.pokemons.length !== 0) return <PokemonList data={data.pokemons} />;
   if (data.pokemons.length === 0) {
       router.push({
       pathname: '/'

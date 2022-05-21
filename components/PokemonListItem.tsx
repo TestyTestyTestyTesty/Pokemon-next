@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { PokemonInterface } from "../intefaces/pokemon";
 import { IndexNumber } from "../lib/indexNumber";
 import { PokemonStyles } from "./styles/PokemonStyles";
 
-export default function PokemonListItem({ pokemon }) {
+export default function PokemonListItem({ pokemon } : {pokemon: PokemonInterface}) {
+  
   return (
     <Link href={`/pokemon/${pokemon.name}`}>
       <PokemonStyles key={pokemon.id}>
