@@ -4,15 +4,13 @@ import { PokemonInterface } from "../intefaces/pokemon";
 import PokemonListItem from "./PokemonListItem";
 
 interface Pokemon {
-  data : {
+  data: {
     id: number;
-    name:string;
-  }[]
+    name: string;
+  }[];
 }
 
-export default function PokemonList({data}:Pokemon) {
-  console.log(data);
-  
+export default function PokemonList({ data }: Pokemon) {
   return (
     <PokemonListStyles>
       {data?.map((pokemon: PokemonInterface) => (

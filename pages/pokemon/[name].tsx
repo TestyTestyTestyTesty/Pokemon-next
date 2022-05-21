@@ -2,6 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import React from "react";
 import EvolutionChain from "../../components/EvolutionChain";
+import Types from "../../components/Types";
 import { capitalizeFirstLetter } from "../../lib/capitalizeFirstLetter";
 const POKEMON_DETAILS_QUERY = gql`
   query POKEMON_DETAILS_QUERY($name: String!) {
@@ -24,7 +25,7 @@ export default function Pokemon() {
 
   return (
     <div>
-      <p>{capitalizeFirstLetter(data.pokemon[0].name)}</p>
+      <Types id={data.pokemon[0].id}/>
       <EvolutionChain id={data.pokemon[0].id}/>
     </div>
   );

@@ -7,6 +7,7 @@ export const EvolutionChainStyles = styled.div`
     margin:0 50px;
     text-align: center;
     position: relative;
+    cursor: pointer
   }
   h2{
     margin:0;
