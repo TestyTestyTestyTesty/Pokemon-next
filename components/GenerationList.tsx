@@ -3,10 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { GenListElement } from "../intefaces/genListElement";
+import LoadingSpinner from "./LoadingSpinner";
 import {
   GenerationListStyles,
   LinkStyles,
-} from "./styles/GenerationListStyles";
+} from "./styles/GenerationList.styled";
 const POKEMON_GENERATION_LIST_QUERY = gql`
   query POKEMON_GENERATION_LIST_QUERY {
     genList: pokemon_v2_generation {
@@ -16,12 +17,14 @@ const POKEMON_GENERATION_LIST_QUERY = gql`
 `;
 export default function GenerationList() {
   const { asPath } = useRouter();
-  
-  const { data, error, loading } = useQuery(POKEMON_GENERATION_LIST_QUERY);
 
-  if (loading) return <p>Loading...</p>;
+  const { data, error, loading } = useQuery(POKEMON_GENERATION_LIST_QUERY);
+  
+  if (loading) return <LoadingSpinner/>;
   if (error) return <p>Error :(</p>;
 
+
+  
   return (
     <GenerationListStyles>
       {data.genList.map((gen: GenListElement) => (

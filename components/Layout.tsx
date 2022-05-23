@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutStyles, Container } from "./styles/LayoutStyles";
+import { LayoutStyles, Container } from "./styles/Layout.styled";
 import Header from "./Header";
 import GenerationList from "./GenerationList";
 

@@ -4,7 +4,7 @@ import React from "react";
 import { PokemonInterface } from "../intefaces/pokemon";
 import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
 import { IndexNumber } from "../lib/indexNumber";
-import { PokemonStyles } from "./styles/PokemonStyles";
+import { PokemonStyles } from "./styles/Pokemon.styled";
 
 export default function PokemonListItem({ pokemon } : {pokemon: PokemonInterface}) {
   

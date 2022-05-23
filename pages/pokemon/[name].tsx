@@ -2,8 +2,9 @@ import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import React from "react";
 import EvolutionChain from "../../components/EvolutionChain";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import Types from "../../components/Types";
-import { capitalizeFirstLetter } from "../../lib/capitalizeFirstLetter";
+
 const POKEMON_DETAILS_QUERY = gql`
   query POKEMON_DETAILS_QUERY($name: String!) {
     pokemon: pokemon_v2_pokemon(where: { name: { _eq: $name } }) {
@@ -20,7 +21,7 @@ export default function Pokemon() {
     variables: { name: name },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner/>;
   if (error) return <p>Error :(</p>;
 
   return (

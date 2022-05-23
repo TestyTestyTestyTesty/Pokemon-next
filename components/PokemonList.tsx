@@ -1,5 +1,5 @@
 import React from "react";
-import { PokemonListStyles } from "./styles/PokemonListStyles";
+import { PokemonListStyles } from "./styles/PokemonList.styled";
 import { PokemonInterface } from "../intefaces/pokemon";
 import PokemonListItem from "./PokemonListItem";
 

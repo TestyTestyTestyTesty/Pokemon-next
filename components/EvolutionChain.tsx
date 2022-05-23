@@ -5,7 +5,15 @@ import React from "react";
 import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
 import { IndexNumber } from "../lib/indexNumber";
 import Badge from "./Badge";
-import { EvolutionChainStyles } from "./styles/EvolutionChainStyles";
+import LoadingSpinner from "./LoadingSpinner";
+import {
+  ContainerStyles,
+  TitleStyles,
+  NameStyles,
+  NumberStyles,
+  SinglePokemonStyles,
+  WrapperStyles,
+} from "./styles/EvolutionChain.styled";
 const POKEMON_EVOLUTION_LINE_QUERY = gql`
   query POKEMON_GENERATION_QUERY($id: Int!) {
     pokemon: pokemon_v2_pokemon(where: { id: { _eq: $id } }) {
@@ -33,26 +41,29 @@ export default function EvolutionChain({ id }: { id: number }) {
     variables: { id: id },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error :(</p>;
   const { pokemons } = data?.pokemon[0]?.specy?.evolutionChain;
   return (
-    <EvolutionChainStyles>
-      {pokemons.map((pokemon: pokemon) => (
-        <Link key={pokemon.id} href={`/pokemon/${pokemon.name}`}>
-        <div>
-          {pokemon.is_baby && <Badge text="BABY" />}
-          <Image
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
-            width="200"
-            height="200"
-            alt={pokemon.name}
-          />
-          <h2>{capitalizeFirstLetter(pokemon.name)}</h2>
-          <span>#{IndexNumber(pokemon.id)}</span>
-        </div>
-        </Link>
-      ))}
-    </EvolutionChainStyles>
+    <ContainerStyles>
+      <TitleStyles>Evolution Chain</TitleStyles>
+      <WrapperStyles>
+        {pokemons.map((pokemon: pokemon) => (
+          <Link key={pokemon.id} href={`/pokemon/${pokemon.name}`}>
+            <SinglePokemonStyles className="">
+              {pokemon.is_baby && <Badge text="BABY" />}
+              <Image
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+                width="200"
+                height="200"
+                alt={pokemon.name}
+              />
+              <NameStyles>{capitalizeFirstLetter(pokemon.name)} {id === pokemon.id && <span>current</span>}</NameStyles>
+              <NumberStyles>#{IndexNumber(pokemon.id)}</NumberStyles>
+            </SinglePokemonStyles>
+          </Link>
+        ))}
+      </WrapperStyles>
+    </ContainerStyles>
   );
 }

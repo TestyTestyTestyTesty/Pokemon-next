@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
-import { TypesStyles, TypeStyles } from "./styles/TypesStyles";
+import LoadingSpinner from "./LoadingSpinner";
+import { TypesStyles, TypeStyles } from "./styles/Types.styled";
 const POKEMON_TYPES_QUERY = gql`
   query POKEMON_TYPES_QUERY($id: Int!) {
     pokemon: pokemon_v2_pokemon(where: { id: { _eq: $id } }) {
@@ -24,7 +25,7 @@ export default function Types({ id }: { id: number }) {
     variables: { id: id },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner/>;
   if (error) return <p>Error :(</p>;
   const { types } = data?.pokemon[0];
 

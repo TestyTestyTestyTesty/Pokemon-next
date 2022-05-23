@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import React from "react";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import PokemonList from "../../components/PokemonList";
 const POKEMON_GENERATION_QUERY = gql`
   query POKEMON_GENERATION_QUERY($id: Int!) {
@@ -23,7 +24,7 @@ export default function Pokemon() {
   });
 
   
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner/>;
   if (error) return <p>Error :(</p>;  
   if (data.pokemons.length !== 0) return <PokemonList data={data.pokemons} />;
   if (data.pokemons.length === 0) {

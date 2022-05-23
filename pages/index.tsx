@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
-
-import GenerationList from "../components/GenerationList";
-import Layout from "../components/Layout";
+import RandomPokemon from "../components/RandomPokemon";
 
 const Home: NextPage = () => {
   return (
-   <p>home</p>
+    <>
+      <p>home</p>
+      <RandomPokemon />
+    </>
   );
 };
 
