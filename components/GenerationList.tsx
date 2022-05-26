@@ -30,7 +30,7 @@ export default function GenerationList() {
       {data.genList.map((gen: GenListElement) => (
         <li key={gen.id}>
           <Link href={`/generation/${gen.id}`} passHref>
-            <LinkStyles activePath={asPath === `/generation/${gen.id}` && true}>
+            <LinkStyles activePath={asPath === `/generation/${gen.id}`}>
               Generation {gen.id}
             </LinkStyles>
           </Link>

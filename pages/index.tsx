@@ -4,8 +4,6 @@ import RandomPokemon from "../components/RandomPokemon";
 const Home: NextPage = () => {
   return (
     <>
-      <p>home</p>
-      <RandomPokemon />
     </>
   );
 };

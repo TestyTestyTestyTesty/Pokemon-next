@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import EvolutionChain from "../../components/EvolutionChain";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import Types from "../../components/Types";
+import PokemonDescription from "../../components/PokemonDescription";
+import NextPokemon from "../../components/NextPokemon";
+import PreviousPokemon from "../../components/PreviousPokemon";
 
 const POKEMON_DETAILS_QUERY = gql`
   query POKEMON_DETAILS_QUERY($name: String!) {
@@ -25,9 +27,11 @@ export default function Pokemon() {
   if (error) return <p>Error :(</p>;
 
   return (
-    <div>
-      <Types id={data.pokemon[0].id}/>
+    <div style={{position:"relative"}}>
+      <PokemonDescription id={data.pokemon[0].id}/>
       <EvolutionChain id={data.pokemon[0].id}/>
+      <PreviousPokemon id={data.pokemon[0].id}/>
+      <NextPokemon id={data.pokemon[0].id}/>
     </div>
   );
 }

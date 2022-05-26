@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { PokemonSumContext } from "../contexts/PokemonSumContext";
 import { generateRandomNumber } from "../lib/generateRandomNumber";
-
+import { RandomPokemonStyled } from "./styles/RandomPokemon.styled";
 const POKEMON_NAME_QUERY = gql`
   query POKEMON_NAME_QUERY($id: Int!) {
     pokemon: pokemon_v2_pokemon(where: { id: { _eq: $id } }) {
@@ -27,8 +27,10 @@ export default function RandomPokemon() {
   }
 
   return (
-    <button onClick={() => findPokemonById({ variables: { id: pokemonID } })}>
+    <RandomPokemonStyled
+      onClick={() => findPokemonById({ variables: { id: pokemonID } })}
+    >
       Load random pokemon
-    </button>
+    </RandomPokemonStyled>
   );
 }

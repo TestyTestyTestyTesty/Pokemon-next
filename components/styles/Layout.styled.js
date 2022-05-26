@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const LayoutStyles = styled.div`
+  position: relative;
   margin: 0 auto;
 `;
 

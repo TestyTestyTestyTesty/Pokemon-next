@@ -53,7 +53,7 @@ export default function EvolutionChain({ id }: { id: number }) {
             <SinglePokemonStyles className="">
               {pokemon.is_baby && <Badge text="BABY" />}
               <Image
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
                 width="200"
                 height="200"
                 alt={pokemon.name}
