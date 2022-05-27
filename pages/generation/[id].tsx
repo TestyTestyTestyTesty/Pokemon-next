@@ -3,32 +3,60 @@ import { useRouter } from "next/router";
 import React from "react";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import PokemonList from "../../components/PokemonList";
-const POKEMON_GENERATION_QUERY = gql`
-  query POKEMON_GENERATION_QUERY($id: Int!) {
-    pokemons: pokemon_v2_pokemonspecies(
-      order_by: { id: asc }
-      where: { generation_id: { _eq: $id } }
-    ) {
-      name
-      id
+import { client } from "../../lib/apollo";
+
+export default function Pokemon({ pokemons }:any ) {
+  return <PokemonList data={pokemons} />;
+}
+export async function getStaticPaths() {
+  const POKEMON_GENERATION_LIST_QUERY = gql`
+    query POKEMON_GENERATION_LIST_QUERY {
+      genList: pokemon_v2_generation {
+        id
+      }
     }
-  }
-`;
-
-export default function Pokemon() {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const { data, error, loading } = useQuery(POKEMON_GENERATION_QUERY, {
-    variables: { id: id },
+  `;
+  const { data } = await client.query({
+    query: POKEMON_GENERATION_LIST_QUERY,
+  });
+  const paths = data.genList.map((gen:any) => {
+    return {
+      params: {
+        id: gen.id.toString(),
+      },
+    };
   });
 
-  
-  if (loading) return <LoadingSpinner/>;
-  if (error) return <p>Error :(</p>;  
-  if (data.pokemons.length !== 0) return <PokemonList data={data.pokemons} />;
-  if (data.pokemons.length === 0) {
-      router.push({
-      pathname: '/'
-     })}
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps() {
+  const POKEMON_GENERATION_QUERY = gql`
+    query POKEMON_GENERATION_QUERY($id: Int!) {
+      pokemons: pokemon_v2_pokemonspecies(
+        order_by: { id: asc }
+        where: { generation_id: { _eq: $id } }
+      ) {
+        name
+        id
+      }
+    }
+  `;
+
+  const { data } = await client.query({
+    query: POKEMON_GENERATION_QUERY,
+    variables: {
+      id: 1,
+    },
+  });
+
+  return {
+    props: {
+      pokemons: data.pokemons,
+    },
+  };
 }
