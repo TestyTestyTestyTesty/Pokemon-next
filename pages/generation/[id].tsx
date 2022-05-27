@@ -34,7 +34,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps( context ) {
+export async function getStaticProps( context:any ) {
   const POKEMON_GENERATION_QUERY = gql`
     query POKEMON_GENERATION_QUERY($id: Int!) {
       pokemons: pokemon_v2_pokemonspecies(
