@@ -34,7 +34,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps() {
+export async function getStaticProps( context ) {
   const POKEMON_GENERATION_QUERY = gql`
     query POKEMON_GENERATION_QUERY($id: Int!) {
       pokemons: pokemon_v2_pokemonspecies(
@@ -46,11 +46,10 @@ export async function getStaticProps() {
       }
     }
   `;
-
   const { data } = await client.query({
     query: POKEMON_GENERATION_QUERY,
     variables: {
-      id: 1,
+      id: context.params.id,
     },
   });
 
