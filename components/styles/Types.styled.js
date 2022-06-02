@@ -38,6 +38,10 @@ const handleColorType = (color) => {
       return "#B7B7CF";
     case "water":
       return "#678fef";
+    case "unknown":
+      return "#0f0";
+    case "shadow":
+      return "#000";
     default:
       return "#fff";
   }
@@ -52,4 +56,5 @@ export const TypeStyles = styled.span`
   padding: 10px 30px;
   margin: 0 5px;
   cursor: pointer;
+  border: 1px solid ${({ activePath }) => (activePath ? "black" : "white")};
 `;

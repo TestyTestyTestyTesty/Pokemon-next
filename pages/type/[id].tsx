@@ -1,32 +1,34 @@
 import { gql } from "@apollo/client";
 import React, { useContext } from "react";
 import PokemonList from "../../components/PokemonList";
-import GenerationList from "../../components/GenerationList";
+import TypesList from "../../components/TypesList";
+import { PokemonSumContext } from "../../contexts/PokemonSumContext";
 import { client } from "../../lib/apollo";
 
 export default function Pokemon({ pokemons }: any) {
   return (
     <>
-      <GenerationList />
+      <TypesList />
       <PokemonList data={pokemons} />;
     </>
   );
 }
 export async function getStaticPaths() {
-  const POKEMON_GENERATION_LIST_QUERY = gql`
-    query POKEMON_GENERATION_LIST_QUERY {
-      genList: pokemon_v2_generation {
+  const POKEMON_TYPES_LIST_QUERY = gql`
+    query POKEMON_TYPES_LISTQUERY {
+      types: pokemon_v2_type {
         id
       }
     }
   `;
   const { data } = await client.query({
-    query: POKEMON_GENERATION_LIST_QUERY,
+    query: POKEMON_TYPES_LIST_QUERY,
   });
-  const paths = data.genList.map((gen: any) => {
+
+  const paths = data.types.map((type: any) => {
     return {
       params: {
-        id: gen.id.toString(),
+        id: type.id.toString(),
       },
     };
   });
@@ -40,12 +42,20 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: any) {
   const POKEMON_GENERATION_QUERY = gql`
     query POKEMON_GENERATION_QUERY($id: Int!) {
-      pokemons: pokemon_v2_pokemonspecies(
-        order_by: { id: asc }
-        where: { generation_id: { _eq: $id } }
+      pokemons: pokemon_v2_pokemon(
+        where: {
+          pokemon_v2_pokemontypes: { pokemon_v2_type: { id: { _eq: $id } } }
+        }
       ) {
+        pokemon_species_id
         name
         id
+        pokemon_v2_pokemontypes {
+          pokemon_v2_type {
+            name
+            id
+          }
+        }
       }
     }
   `;

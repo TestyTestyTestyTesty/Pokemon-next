@@ -9,7 +9,7 @@ import { PokemonStyles } from "./styles/Pokemon.styled";
 export default function PokemonListItem({ pokemon } : {pokemon: PokemonInterface}) {
   
   return (
-    <Link href={`/pokemon/${pokemon.name}`}>
+    <Link href={`/pokemon/${pokemon.id}`}>
       <PokemonStyles key={pokemon.id}>
         <Image
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
