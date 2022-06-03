@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { TypesStyles, TypeStyles } from "./styles/Types.styled";
 
@@ -11,9 +12,9 @@ export default function Types({ types }: { types: any }) {
   return (
     <TypesStyles>
       {types.map((type: TypeInterface) => (
-        <TypeStyles key={type.type.id} color={type.type.name}>
-          {type.type.name}
-        </TypeStyles>
+        <Link key={type.type.id} href={`/type/${type.type.id}`} passHref>
+          <TypeStyles color={type.type.name}>{type.type.name}</TypeStyles>
+        </Link>
       ))}
     </TypesStyles>
   );

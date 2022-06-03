@@ -1,16 +1,20 @@
 import styled from "styled-components";
-
+import {mediaQueries} from "./mediaQueries";
 export const LinkStyles = styled.div`
   position:fixed;
-  top:200px;
+  top:20vh;
   right:0;
   display: flex;
   align-items: center;
   justify-content: center;
   background:black;
   color:white;
-  width: 150px;
   height: 45px;
+  width: 100px;
   cursor:pointer;
+  text-align: center;
+  ${mediaQueries.s600}{
+    width: 150px;
+  }
 `;
 

@@ -28,7 +28,7 @@ export default function Pokemon({ pokemon }: { pokemon: any }) {
     </div>
   );
 }
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
   const POKEMON_SUM_QUERY = gql`
     query POKEMON_SUM_QUERY {
       pokemon: pokemon_v2_pokemonspecies_aggregate {
@@ -70,8 +70,8 @@ export async function getStaticPaths() {
     paths: paths,
     fallback: false,
   };
-}
-export async function getStaticProps(context: any) {
+}*/
+export async function getServerSideProps(context: any) {
   const POKEMON_DETAILS_QUERY = gql`
     query POKEMON_DETAILS_QUERY($id: Int!) {
       pokemon: pokemon_v2_pokemon(where: { pokemon_species_id: { _eq: $id } }) {

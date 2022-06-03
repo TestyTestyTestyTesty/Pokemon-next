@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import LoadingSpinner from "./LoadingSpinner";
-import { TypesStyles, TypeStyles } from "./styles/Types.styled";
+import { TypesStyles, TypeStyles } from "./styles/TypesList.styled";
 
 interface TypeInterface {
   type: {

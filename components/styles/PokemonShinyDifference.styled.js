@@ -1,9 +1,15 @@
 import styled from "styled-components";
+import { mediaQueries } from "./mediaQueries";
 
 export const ContainerStyles = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: auto;
+  flex-direction: column;
+  ${mediaQueries.s600}{
+    flex-direction: row;
+  }
 `;
 
 export const SinglePokemonStyles = styled.div`
@@ -13,7 +19,6 @@ export const SinglePokemonStyles = styled.div`
 `;
 export const SinglePokemonWrapperStyles = styled.div`
   display: flex;
-  margin: 0 10px;
 `;
 export const VersionStyles = styled.div`
   display: flex;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const BadgeStyles = styled.span`
   background: #304797;
   border: 3px solid #304797;
@@ -8,5 +9,5 @@ export const BadgeStyles = styled.span`
   color: #fcbf12;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: -1;
 `;

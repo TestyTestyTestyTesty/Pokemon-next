@@ -1,15 +1,14 @@
 import { gql } from "@apollo/client";
-import React, { useContext } from "react";
+import React from "react";
 import PokemonList from "../../components/PokemonList";
 import TypesList from "../../components/TypesList";
-import { PokemonSumContext } from "../../contexts/PokemonSumContext";
 import { client } from "../../lib/apollo";
 
 export default function Pokemon({ pokemons }: any) {
   return (
     <>
       <TypesList />
-      <PokemonList data={pokemons} />;
+      <PokemonList data={pokemons} />
     </>
   );
 }

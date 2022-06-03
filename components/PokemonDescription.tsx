@@ -3,6 +3,7 @@ import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
 import { IndexNumber } from "../lib/indexNumber";
 import MegaEvolutions from "./MegaEvolutions";
 import PokemonShinyDifference from "./PokemonShinyDifference";
+import {TopWrapperStyles} from "./styles/PokemonDescription.styled"
 import Types from "./Types";
 
 export default function PokemonDescription({
@@ -20,10 +21,12 @@ export default function PokemonDescription({
 }) {
   return (
     <>
-      <h2>
-        {capitalizeFirstLetter(name)} #{IndexNumber(id)}
-      </h2>
-      <Types types={types} />
+      <TopWrapperStyles>
+        <h2>
+          {capitalizeFirstLetter(name)} #{IndexNumber(id)}
+        </h2>
+        <Types types={types} />
+      </TopWrapperStyles>
       <PokemonShinyDifference id={id} name={name} genderDiff={genderDiff} />
       <MegaEvolutions id={id} evolutionChain={evolutionChain} />
     </>
