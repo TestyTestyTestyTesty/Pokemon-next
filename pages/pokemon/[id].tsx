@@ -6,6 +6,7 @@ import NextPokemon from "../../components/NextPokemon";
 import PreviousPokemon from "../../components/PreviousPokemon";
 import { client } from "../../lib/apollo";
 import { PokemonSumContext } from "../../contexts/PokemonSumContext";
+import ScrollTop from "../../components/ScrollTop";
 
 export default function Pokemon({ pokemon }: { pokemon: any }) {
   const { pokemonSum }: any = useContext(PokemonSumContext);
@@ -25,6 +26,7 @@ export default function Pokemon({ pokemon }: { pokemon: any }) {
       />
       {pokemon[0].id > 1 && <PreviousPokemon id={pokemon[0].id} />}
       {pokemon[0].id < pokemonSum && <NextPokemon id={pokemon[0].id} />}
+      <ScrollTop />
     </div>
   );
 }

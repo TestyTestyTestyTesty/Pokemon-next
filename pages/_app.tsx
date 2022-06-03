@@ -5,6 +5,7 @@ import { client } from "../lib/apollo";
 import Layout from "../components/Layout";
 import { PokemonSumContext } from "../contexts/PokemonSumContext";
 import { useEffect, useState } from "react";
+import ScrollTop from "../components/ScrollTop";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [pokemonSum, setPokemonSum] = useState(null);

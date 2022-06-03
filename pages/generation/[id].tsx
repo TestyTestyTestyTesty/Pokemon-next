@@ -3,12 +3,14 @@ import React, { useContext } from "react";
 import PokemonList from "../../components/PokemonList";
 import GenerationList from "../../components/GenerationList";
 import { client } from "../../lib/apollo";
+import ScrollTop from "../../components/ScrollTop";
 
 export default function Pokemon({ pokemons }: any) {
   return (
     <>
       <GenerationList />
       <PokemonList data={pokemons} />;
+      <ScrollTop />
     </>
   );
 }

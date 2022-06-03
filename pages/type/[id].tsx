@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import React from "react";
 import PokemonList from "../../components/PokemonList";
+import ScrollTop from "../../components/ScrollTop";
 import TypesList from "../../components/TypesList";
 import { client } from "../../lib/apollo";
 
@@ -9,6 +10,7 @@ export default function Pokemon({ pokemons }: any) {
     <>
       <TypesList />
       <PokemonList data={pokemons} />
+      <ScrollTop />
     </>
   );
 }
