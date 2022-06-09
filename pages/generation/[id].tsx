@@ -4,12 +4,16 @@ import PokemonList from "../../components/PokemonList";
 import GenerationList from "../../components/GenerationList";
 import { client } from "../../lib/apollo";
 import ScrollTop from "../../components/ScrollTop";
+import Head from "next/head";
 
 export default function Pokemon({ pokemons }: any) {
   return (
     <>
+      <Head>
+        <title>Sick Fits</title>
+      </Head>
       <GenerationList />
-      <PokemonList data={pokemons} />;
+      <PokemonList data={pokemons} />
       <ScrollTop />
     </>
   );

@@ -11,11 +11,11 @@ interface TypeInterface {
 export default function Types({ types }: { types: any }) {
   return (
     <TypesStyles>
-      {types.map((type: TypeInterface) => (
+      {types.map((type: TypeInterface) => {
         <Link key={type.type.id} href={`/type/${type.type.id}`} passHref>
           <TypeStyles color={type.type.name}>{type.type.name}</TypeStyles>
-        </Link>
-      ))}
+        </Link>;
+      })}
     </TypesStyles>
   );
 }

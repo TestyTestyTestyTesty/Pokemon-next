@@ -22,8 +22,8 @@ export const LoadingSpinnerStyles = styled.div`
     height: 32px;
     margin: 4px;
     border-radius: 50%;
-    border: 3px solid #000;
-    border-color: #000 transparent #000 transparent;
+    border: 3px solid ${props => props.theme.mainInverted};
+    border-color: ${props => props.theme.mainInverted} transparent ${props => props.theme.mainInverted} transparent;
     animation: ${rotate} 1.2s linear infinite;
   }
 `;

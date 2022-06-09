@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const handleColorType = (color) => {
+const handleColorType = (color: string) => {
   switch (color) {
     case "bug":
       return "#A7B720";
@@ -46,15 +46,19 @@ const handleColorType = (color) => {
       return "#fff";
   }
 };
-
+type Props = {
+  color:string,
+  activePath?: boolean
+}
 export const TypesStyles = styled.div`
   display: flex;
 `;
-export const TypeStyles = styled.span`
+export const TypeStyles = styled.span<Props>`
   background: ${({ color }) => handleColorType(color)};
   color: white;
   padding: 10px 30px;
   margin: 0 5px;
   cursor: pointer;
-  border: 1px solid ${({ activePath }) => (activePath ? "black" : "white")};
+  border: 1px solid
+    ${({ activePath, theme }) => (activePath ? theme.mainInverted : theme.main)};
 `;

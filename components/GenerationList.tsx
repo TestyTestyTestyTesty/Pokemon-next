@@ -20,23 +20,23 @@ export default function GenerationList() {
   const { asPath } = useRouter();
 
   const { data, error, loading } = useQuery(POKEMON_GENERATION_LIST_QUERY);
-  
-  if (loading) return <LoadingSpinner/>;
+
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error :(</p>;
 
-
-  
   return (
     <GenerationListStyles>
-      {data.genList.map((gen: GenListElement) => (
-        <GenerationListItemStyles key={gen.id}>
-          <Link href={`/generation/${gen.id}`} passHref>
-            <LinkStyles activePath={asPath === `/generation/${gen.id}`}>
-              Generation {gen.id}
-            </LinkStyles>
-          </Link>
-        </GenerationListItemStyles>
-      ))}
+      {data.genList.map((gen: GenListElement) => {
+        return (
+          <GenerationListItemStyles key={gen.id}>
+            <Link href={`/generation/${gen.id}`} passHref>
+              <LinkStyles activePath={asPath === `/generation/${gen.id}`}>
+                Generation {gen.id}
+              </LinkStyles>
+            </Link>
+          </GenerationListItemStyles>
+        );
+      })}
     </GenerationListStyles>
   );
 }

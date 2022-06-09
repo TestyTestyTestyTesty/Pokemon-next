@@ -1,14 +1,23 @@
 import styled from "styled-components";
 import {mediaQueries} from "./mediaQueries";
-export const LinkStyles = styled.div`
+type Props = {
+  next?: boolean,
+  previous?: boolean
+}
+export const LinkStyles = styled.div<Props>`
   position:fixed;
   top:20vh;
-  right:0;
+  ${({ next }) => next && `
+    right:0;
+  `}
+  ${({ previous }) => previous && `
+    left:0;
+  `}
   display: flex;
   align-items: center;
   justify-content: center;
-  background:black;
-  color:white;
+  background:${props => props.theme.mainInverted};
+  color:${props => props.theme.main};
   height: 45px;
   width: 100px;
   cursor:pointer;

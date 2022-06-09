@@ -28,8 +28,10 @@ export const VersionStyles = styled.div`
 export const GenderNameStyles = styled.h2`
   text-align: center;
   margin: 10px 0 0;
+  color:${props => props.theme.textColor};
 `;
 export const VersionNameStyles = styled.h3`
   text-align: center;
   margin: 10px 0 0;
+  color:${props => props.theme.textColor};
 `;

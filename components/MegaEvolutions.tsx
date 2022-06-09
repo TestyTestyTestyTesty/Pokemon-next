@@ -3,6 +3,7 @@ import Image from "next/image";
 import { version } from "os";
 import React from "react";
 import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
+import { hyphenToSpace } from "../lib/hyphenToSpace";
 import LoadingSpinner from "./LoadingSpinner";
 import {
   ContainerStyles,
@@ -26,12 +27,11 @@ export default function MegaEvolutions({
 
   return (
     <div>
-      {megaEvolutions.map((version: any) => (
+      {megaEvolutions.map((version: any) => {
         <ContainerStyles key={version.id}>
-    
           <SinglePokemonStyles>
             <GenderNameStyles>
-              {capitalizeFirstLetter(version.name)}
+              {hyphenToSpace(capitalizeFirstLetter(version.name))}
             </GenderNameStyles>
 
             <SinglePokemonWrapperStyles>
@@ -55,8 +55,8 @@ export default function MegaEvolutions({
               </VersionStyles>
             </SinglePokemonWrapperStyles>
           </SinglePokemonStyles>
-        </ContainerStyles>
-      ))}
+        </ContainerStyles>;
+      })}
     </div>
   );
 }

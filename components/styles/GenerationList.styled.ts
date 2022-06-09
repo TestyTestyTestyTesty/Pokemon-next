@@ -1,4 +1,8 @@
 import styled from "styled-components";
+
+type Props = {
+  activePath: Boolean
+}
 export const GenerationListStyles = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -11,10 +15,11 @@ export const GenerationListStyles = styled.ul`
 export const GenerationListItemStyles = styled.li`
   display: flex;
 `;
-export const LinkStyles = styled.a`
-  background: ${({ activePath }) => (activePath ? "palevioletred" : "white")};
+export const LinkStyles = styled.a<Props>`
+  background: ${({ activePath,theme }) => (activePath ? theme.mainInverted : theme.main)};
   padding: 5px 10px;
-  border: 1px solid black;
+  border: 1px solid ${props => props.theme.mainInverted};
+  color:${props => props.theme.textColor};
   margin: 5px;
   cursor: pointer;
   transition: all 0.3s;

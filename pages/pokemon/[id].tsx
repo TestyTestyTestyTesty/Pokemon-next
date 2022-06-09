@@ -20,10 +20,12 @@ export default function Pokemon({ pokemon }: { pokemon: any }) {
         types={pokemon[0].types}
         evolutionChain={pokemon}
       />
-      <EvolutionChain
-        id={pokemon[0].id}
-        pokemons={pokemon[0].specy.evolutionChain.pokemons}
-      />
+      {pokemon[0].specy.evolutionChain.pokemons.length > 1 && (
+        <EvolutionChain
+          id={pokemon[0].id}
+          pokemons={pokemon[0].specy.evolutionChain.pokemons}
+        />
+      )}
       {pokemon[0].id > 1 && <PreviousPokemon id={pokemon[0].id} />}
       {pokemon[0].id < pokemonSum && <NextPokemon id={pokemon[0].id} />}
       <ScrollTop />

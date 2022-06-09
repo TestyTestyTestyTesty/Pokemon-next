@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 
-import { LinkStyles } from "./styles/PreviousPokemon.styled";
+import { LinkStyles } from "./styles/PreviousNextPokemon.styled";
 
 
 export default function NextPokemon({ id }: { id: number }) {
@@ -10,7 +10,7 @@ export default function NextPokemon({ id }: { id: number }) {
 
   return (
     <Link href={`/pokemon/${id-1}`} passHref>
-      <LinkStyles>Previous Pokemon</LinkStyles>
+      <LinkStyles previous>Previous Pokemon</LinkStyles>
     </Link>
   );
 }

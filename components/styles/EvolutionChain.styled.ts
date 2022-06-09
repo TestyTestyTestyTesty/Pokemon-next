@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {mediaQueries} from "./mediaQueries";
+import { mediaQueries } from "./mediaQueries";
 export const ContainerStyles = styled.div`
   margin: 50px auto;
   display: flex;
@@ -7,15 +7,16 @@ export const ContainerStyles = styled.div`
 `;
 
 export const TitleStyles = styled.h2`
-margin: 0;
+  margin: 0;
   text-align: center;
+  color: ${(props) => props.theme.textColor};
 `;
 export const WrapperStyles = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  ${mediaQueries.s600}{
-    flex-direction: row;
+  ${mediaQueries.s600} {
+    //flex-direction: row;
   }
 `;
 export const SinglePokemonStyles = styled.div`
@@ -25,18 +26,20 @@ export const SinglePokemonStyles = styled.div`
   align-self: center;
   margin: 20px 0;
   position: relative;
-  ${mediaQueries.s600}{
+  ${mediaQueries.s600} {
     margin: 0 30px;
   }
-  ${mediaQueries.xl}{
+  ${mediaQueries.xl} {
     margin: 0 50px;
   }
 `;
 export const NameStyles = styled.h3`
   margin: 0 auto;
   text-align: center;
+  color: ${(props) => props.theme.textColor};
 `;
 export const NumberStyles = styled.h4`
   margin: 0 auto;
   text-align: center;
+  color: ${(props) => props.theme.textColor};
 `;

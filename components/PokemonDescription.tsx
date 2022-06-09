@@ -1,9 +1,10 @@
 import React from "react";
 import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
+import { hyphenToSpace } from "../lib/hyphenToSpace";
 import { IndexNumber } from "../lib/indexNumber";
 import MegaEvolutions from "./MegaEvolutions";
 import PokemonShinyDifference from "./PokemonShinyDifference";
-import {TopWrapperStyles} from "./styles/PokemonDescription.styled"
+import {TopWrapperStyles, TitleStyles} from "./styles/PokemonDescription.styled"
 import Types from "./Types";
 
 export default function PokemonDescription({
@@ -22,9 +23,9 @@ export default function PokemonDescription({
   return (
     <>
       <TopWrapperStyles>
-        <h2>
-          {capitalizeFirstLetter(name)} #{IndexNumber(id)}
-        </h2>
+        <TitleStyles>
+          {hyphenToSpace(capitalizeFirstLetter(name))} #{IndexNumber(id)}
+        </TitleStyles>
         <Types types={types} />
       </TopWrapperStyles>
       <PokemonShinyDifference id={id} name={name} genderDiff={genderDiff} />

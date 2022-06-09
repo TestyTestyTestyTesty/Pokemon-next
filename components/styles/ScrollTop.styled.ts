@@ -4,8 +4,8 @@ export const ScrollTopStyles = styled.div`
   position: fixed;
   bottom:10vh;
   right: 5vw;
-  background:black;
-  color:white;
+  background:${props => props.theme.mainInverted};
+  color:${props => props.theme.main};
   width:50px;
   height:50px;
   border-radius:5000px;

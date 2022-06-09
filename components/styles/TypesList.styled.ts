@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const handleColorType = (color) => {
+const handleColorType = (color: string) => {
   switch (color) {
     case "bug":
       return "#A7B720";
@@ -45,20 +45,24 @@ const handleColorType = (color) => {
       return "#fff";
   }
 };
-
+type Props = {
+  color: string;
+  activePath?: boolean;
+};
 export const TypesStyles = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   justify-content: center;
 `;
-export const TypeStyles = styled.a`
+export const TypeStyles = styled.a<Props>`
   background: ${({ color }) => handleColorType(color)};
   color: white;
   padding: 10px 30px;
   margin: 5px;
   cursor: pointer;
-  border: 1px solid ${({ activePath }) => (activePath ? "black" : "white")};
+  border: 1px solid
+    ${({ activePath, theme }) => (activePath ? theme.mainInverted : theme.main)};
   flex: 1 0 auto;
   text-align: center;
 `;

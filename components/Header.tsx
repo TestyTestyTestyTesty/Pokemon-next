@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { HeaderStyles } from "./styles/Header.styled";
 import Link from "next/link";
+import ThemeToggler from "./ThemeToggler";
 export default function header() {
   return (
     <HeaderStyles>
@@ -15,6 +16,7 @@ export default function header() {
           />
         </a>
       </Link>
+      <ThemeToggler />
     </HeaderStyles>
   );
 }

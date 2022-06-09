@@ -16,6 +16,11 @@ const POKEMON_TYPES_QUERY = gql`
     types: pokemon_v2_type {
       name
       id
+      sum: pokemon_v2_pokemontypes_aggregate {
+        aggregate {
+          count
+        }
+      }
     }
   }
 `;
@@ -25,18 +30,27 @@ export default function TypesList() {
 
   if (loading) return <LoadingSpinner />;
   if (error) return <p>Error :(</p>;
+
+  const filterNotEmpty = (type:any) => {
+    return type.sum.aggregate.count > 0;
+  };
+
+  const notEmptyTypes = data.types.filter(filterNotEmpty);
+
   return (
     <TypesStyles>
-      {data.types.map((type: any) => (
-        <Link key={type.id} href={`/type/${type.id}`} passHref>
-          <TypeStyles
-            activePath={asPath === `/type/${type.id}`}
-            color={type.name}
-          >
-            {type.name}
-          </TypeStyles>
-        </Link>
-      ))}
+      {notEmptyTypes.map((type: any) => {
+        return (
+          <Link key={type.id} href={`/type/${type.name}`} passHref>
+            <TypeStyles
+              activePath={asPath === `/type/${type.name}`}
+              color={type.name}
+            >
+              {type.name}
+            </TypeStyles>
+          </Link>
+        );
+      })}
     </TypesStyles>
   );
 }
