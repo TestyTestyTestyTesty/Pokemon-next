@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import { ApolloProvider, gql } from "@apollo/client";
 import type { AppProps } from "next/app";
 import { client } from "../lib/apollo";
@@ -6,11 +5,11 @@ import Layout from "../components/Layout";
 import { PokemonSumContext } from "../contexts/PokemonSumContext";
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./../components/styles/GlobalStyles";
-import { themeLight, themeDark } from "./../components/styles/themes";
+import { GlobalStyles } from "../styles/GlobalStyles";
+import { themeLight, themeDark } from "../styles/themes";
 import { ThemeContext } from "../contexts/ThemeContext";
 function MyApp({ Component, pageProps }: AppProps) {
-  const [pokemonSum, setPokemonSum] = useState(null);
+  const [pokemonSum, setPokemonSum] = useState<number | null>(null);
   useEffect(() => {
     client
       .query({

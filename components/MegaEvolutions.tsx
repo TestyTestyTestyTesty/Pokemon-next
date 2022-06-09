@@ -18,16 +18,18 @@ export default function MegaEvolutions({
   id,
   evolutionChain,
 }: {
-  id: any;
+  id: number;
   evolutionChain: any;
 }) {
   const megaEvolutions = evolutionChain.filter(
     (pokemon: any) => pokemon.id !== id
   );
 
+  
   return (
     <div>
       {megaEvolutions.map((version: any) => {
+        
         <ContainerStyles key={version.id}>
           <SinglePokemonStyles>
             <GenderNameStyles>

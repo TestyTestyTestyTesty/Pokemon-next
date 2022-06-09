@@ -26,14 +26,14 @@ export default function EvolutionChain({
   pokemons,
   id,
 }: {
-  pokemons: any;
-  id: any;
+  pokemons: pokemon[];
+  id: number;
 }) {
   return (
     <ContainerStyles>
       <TitleStyles>Evolution Chain</TitleStyles>
       <WrapperStyles>
-        {pokemons.map((pokemon: pokemon) => {
+        {pokemons.map((pokemon) => {
           if (!pokemon.evolves_from_species_id) {
             return (
               <Link key={pokemon.id} href={`/pokemon/${pokemon.id}`}>

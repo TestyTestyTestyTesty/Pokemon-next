@@ -6,11 +6,11 @@ import { client } from "../../lib/apollo";
 import ScrollTop from "../../components/ScrollTop";
 import Head from "next/head";
 
-export default function Pokemon({ pokemons }: any) {
+export default function Pokemon({ pokemons, id }: any) {
   return (
     <>
       <Head>
-        <title>Sick Fits</title>
+        <title>Pokemon App | Generation {id} </title>
       </Head>
       <GenerationList />
       <PokemonList data={pokemons} />
@@ -65,6 +65,7 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       pokemons: data.pokemons,
+      id: context.params.id,
     },
   };
 }

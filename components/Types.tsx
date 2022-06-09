@@ -8,7 +8,7 @@ interface TypeInterface {
     name: string;
   };
 }
-export default function Types({ types }: { types: any }) {
+export default function Types({ types }: any) {
   return (
     <TypesStyles>
       {types.map((type: TypeInterface) => {

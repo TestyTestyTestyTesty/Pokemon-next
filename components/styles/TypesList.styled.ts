@@ -45,10 +45,10 @@ const handleColorType = (color: string) => {
       return "#fff";
   }
 };
-type Props = {
+interface Props {
   color: string;
   activePath?: boolean;
-};
+}
 export const TypesStyles = styled.div`
   display: flex;
   flex-wrap: wrap;

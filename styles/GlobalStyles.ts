@@ -1,3 +1,9 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+body{
+  background: ${(props) => props.theme.main};
+}
 html,
 body {
   padding: 0;
@@ -14,3 +20,4 @@ a {
 * {
   box-sizing: border-box;
 }
+`;

@@ -6,10 +6,31 @@ import ScrollTop from "../../components/ScrollTop";
 import TypesList from "../../components/TypesList";
 import { client } from "../../lib/apollo";
 import { capitalizeFirstLetter } from "../../lib/capitalizeFirstLetter";
-
-export default function Pokemon({ pokemons,type }: any) {
-
-  
+interface Pokemon {
+  pokemon_species_id: number;
+  name: string;
+  id: number;
+  pokemon_v2_pokemontypes: PokemonType[];
+}
+interface PokemonType {
+  name: string;
+  id: number;
+}
+interface Context {
+  params: {
+    name: string;
+  };
+  locales?: string;
+  locale?: string;
+  deafultLocale?: string;
+}
+export default function Pokemon({
+  pokemons,
+  type,
+}: {
+  pokemons: Pokemon[];
+  type: string;
+}) {
   return (
     <>
       <Head>
@@ -34,7 +55,7 @@ export async function getStaticPaths() {
     query: POKEMON_TYPES_LIST_QUERY,
   });
 
-  const paths = data.types.map((type: any) => {
+  const paths = data.types.map((type: PokemonType) => {
     return {
       params: {
         name: type.name.toString(),
@@ -48,7 +69,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps(context: Context) {
   const POKEMON_SUM_QUERY = gql`
     query POKEMON_SUM_QUERY {
       pokemon: pokemon_v2_pokemonspecies_aggregate {

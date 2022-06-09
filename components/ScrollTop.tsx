@@ -22,9 +22,8 @@ export default function ScrollTop() {
       behavior: "smooth",
     });
   };
-  
-  return (
-    //visible && <ScrollTopStyles onClick={scrollToTop}>Top</ScrollTopStyles>
+
+  return visible ? (
     <ScrollTopStyles onClick={scrollToTop}>Top</ScrollTopStyles>
-  );
+  ) : null;
 }

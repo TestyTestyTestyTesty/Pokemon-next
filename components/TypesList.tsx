@@ -6,9 +6,12 @@ import LoadingSpinner from "./LoadingSpinner";
 import { TypesStyles, TypeStyles } from "./styles/TypesList.styled";
 
 interface TypeInterface {
-  type: {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
+  sum: {
+    aggregate: {
+      count: number;
+    };
   };
 }
 const POKEMON_TYPES_QUERY = gql`
@@ -31,7 +34,7 @@ export default function TypesList() {
   if (loading) return <LoadingSpinner />;
   if (error) return <p>Error :(</p>;
 
-  const filterNotEmpty = (type:any) => {
+  const filterNotEmpty = (type: TypeInterface) => {
     return type.sum.aggregate.count > 0;
   };
 
@@ -39,7 +42,8 @@ export default function TypesList() {
 
   return (
     <TypesStyles>
-      {notEmptyTypes.map((type: any) => {
+      {notEmptyTypes.map((type: TypeInterface) => {
+    
         return (
           <Link key={type.id} href={`/type/${type.name}`} passHref>
             <TypeStyles

@@ -4,8 +4,32 @@ import { hyphenToSpace } from "../lib/hyphenToSpace";
 import { IndexNumber } from "../lib/indexNumber";
 import MegaEvolutions from "./MegaEvolutions";
 import PokemonShinyDifference from "./PokemonShinyDifference";
-import {TopWrapperStyles, TitleStyles} from "./styles/PokemonDescription.styled"
+import {
+  TopWrapperStyles,
+  TitleStyles,
+} from "./styles/PokemonDescription.styled";
 import Types from "./Types";
+
+interface Props {
+  name: string;
+  id: number;
+  genderDiff: boolean;
+  types: PokemonType[];
+  evolutionChain: EvolutionChain;
+}
+interface PokemonType {
+  id: number;
+  name: string;
+}
+
+interface EvolutionChain {
+  id: number;
+  name: string;
+  types: PokemonType[];
+}
+interface Specy {
+  genderDiff: any;
+}
 
 export default function PokemonDescription({
   name,
@@ -13,13 +37,7 @@ export default function PokemonDescription({
   genderDiff,
   types,
   evolutionChain,
-}: {
-  name: any;
-  id: any;
-  genderDiff: any;
-  types: any;
-  evolutionChain: any;
-}) {
+}: Props) {
   return (
     <>
       <TopWrapperStyles>

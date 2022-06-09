@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const WrapperStyles = styled.div`
   display: flex;
   justify-content: center;
+  margin: 0 0 20px;
 `;
 export const LinkStyles = styled.a`
   background: ${({ color }) => (color ? color : "white")};

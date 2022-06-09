@@ -46,9 +46,9 @@ const handleColorType = (color: string) => {
       return "#fff";
   }
 };
-type Props = {
-  color:string,
-  activePath?: boolean
+interface Props {
+  color: string;
+  activePath?: boolean;
 }
 export const TypesStyles = styled.div`
   display: flex;
