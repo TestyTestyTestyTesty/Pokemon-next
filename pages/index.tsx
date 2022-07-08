@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import PokemonFilterTypes from "../components/PokemonFilterTypes";
 import RandomPokemon from "../components/RandomPokemon";
-import {Container} from "./styles/index.styled"
+import {Container} from "../components/styles/index.styled"
 const Home: NextPage = () => {
   return (
     <Container>

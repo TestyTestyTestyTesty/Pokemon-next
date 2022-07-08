@@ -5,7 +5,7 @@ import FavouriteEmptyPage from "../components/FavouriteEmptyPage";
 import LoadingSpinner from "../components/LoadingSpinner";
 import PokemonList from "../components/PokemonList";
 import { PokemonFavContext } from "../contexts/PokemonFavContext";
-import { TitleStyles } from "./styles/favourite.styled";
+import { TitleStyles } from "../components/styles/favourite.styled";
 
 const POKEMON_FAV_QUERY = gql`
   query POKEMON_FAV_QUERY($pokemonArr: [Int!])  {
