@@ -37,14 +37,14 @@ export default function PokemonDescription({
   genderDiff,
   types,
   evolutionChain,
-}: Props) {
+}: Props): JSX.Element {
   return (
     <>
       <TopWrapperStyles>
         <TitleStyles>
           {hyphenToSpace(capitalizeFirstLetter(name))} #{IndexNumber(id)}
         </TitleStyles>
-        <Types types={types} />
+        {/**/}<Types types={types} />
       </TopWrapperStyles>
       <PokemonShinyDifference id={id} name={name} genderDiff={genderDiff} />
       <MegaEvolutions id={id} evolutionChain={evolutionChain} />

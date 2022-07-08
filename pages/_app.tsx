@@ -8,8 +8,11 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { themeLight, themeDark } from "../styles/themes";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { PokemonFavProvider } from "../contexts/PokemonFavContext";
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [pokemonSum, setPokemonSum] = useState<number | null>(null);
+
   useEffect(() => {
     client
       .query({
@@ -34,12 +37,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={client}>
       <ThemeContext.Provider value={{ theme, themeToggler }}>
         <PokemonSumContext.Provider value={{ pokemonSum, setPokemonSum }}>
-          <ThemeProvider theme={theme === "light" ? themeLight : themeDark}>
-            <GlobalStyles />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ThemeProvider>
+          <PokemonFavProvider>
+            <ThemeProvider theme={theme === "light" ? themeLight : themeDark}>
+              <GlobalStyles />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </ThemeProvider>
+          </PokemonFavProvider>
         </PokemonSumContext.Provider>
       </ThemeContext.Provider>
     </ApolloProvider>

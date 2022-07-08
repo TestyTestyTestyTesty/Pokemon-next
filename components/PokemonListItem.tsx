@@ -5,6 +5,7 @@ import { PokemonInterface } from "../intefaces/pokemon";
 import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
 import { hyphenToSpace } from "../lib/hyphenToSpace";
 import { IndexNumber } from "../lib/indexNumber";
+import FavouriteButton from "./FavouriteButton";
 import { PokemonListItemStyles } from "./styles/PokemonListItem.styled";
 
 export default function PokemonListItem({

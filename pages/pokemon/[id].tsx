@@ -9,6 +9,7 @@ import { PokemonSumContext } from "../../contexts/PokemonSumContext";
 import ScrollTop from "../../components/ScrollTop";
 import Head from "next/head";
 import { capitalizeFirstLetter } from "../../lib/capitalizeFirstLetter";
+import FavouriteButton from "../../components/FavouriteButton";
 interface Props {
   pokemonSum?: number;
 }
@@ -49,7 +50,7 @@ export default function Pokemon({ pokemon }: any) {
       <Head>
         <title>Pokemon App | {capitalizeFirstLetter(pokemon[0].name)}</title>
       </Head>
-
+      <FavouriteButton id={pokemon[0].id} />
       <div style={{ position: "relative" }}>
         <PokemonDescription
           id={pokemon[0].id}

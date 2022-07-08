@@ -6,7 +6,28 @@ import { client } from "../../lib/apollo";
 import ScrollTop from "../../components/ScrollTop";
 import Head from "next/head";
 
-export default function Pokemon({ pokemons, id }: any) {
+interface Pokemon {
+  name: string;
+  id: number;
+}
+interface Gen {
+  id: number;
+}
+interface Context {
+  params: {
+    id: number;
+  };
+  locales?: string;
+  locale?: string;
+  deafultLocale?: string;
+}
+export default function Pokemon({
+  pokemons,
+  id,
+}: {
+  pokemons: Pokemon[];
+  id: number;
+}) {
   return (
     <>
       <Head>
@@ -29,7 +50,7 @@ export async function getStaticPaths() {
   const { data } = await client.query({
     query: POKEMON_GENERATION_LIST_QUERY,
   });
-  const paths = data.genList.map((gen: any) => {
+  const paths = data.genList.map((gen: Gen) => {
     return {
       params: {
         id: gen.id.toString(),
@@ -43,7 +64,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps(context: Context) {
   const POKEMON_GENERATION_QUERY = gql`
     query POKEMON_GENERATION_QUERY($id: Int!) {
       pokemons: pokemon_v2_pokemonspecies(

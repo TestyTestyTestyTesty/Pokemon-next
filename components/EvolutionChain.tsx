@@ -1,4 +1,3 @@
-import { gql, useQuery } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,7 +5,6 @@ import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
 import { hyphenToSpace } from "../lib/hyphenToSpace";
 import { IndexNumber } from "../lib/indexNumber";
 import Badge from "./Badge";
-import LoadingSpinner from "./LoadingSpinner";
 import {
   ContainerStyles,
   TitleStyles,

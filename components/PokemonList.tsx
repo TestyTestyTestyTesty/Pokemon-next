@@ -14,9 +14,7 @@ export default function PokemonList({ data }: Pokemon) {
   return (
     <PokemonListStyles>
       {data?.map((pokemon: PokemonInterface) => {
-        return(
-          <PokemonListItem key={pokemon.id} pokemon={pokemon} />
-        )
+        return <PokemonListItem key={pokemon.id} pokemon={pokemon} />;
       })}
     </PokemonListStyles>
   );

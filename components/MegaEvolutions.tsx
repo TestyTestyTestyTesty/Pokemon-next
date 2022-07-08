@@ -1,10 +1,9 @@
-import { gql, useQuery } from "@apollo/client";
 import Image from "next/image";
-import { version } from "os";
+
 import React from "react";
 import { capitalizeFirstLetter } from "../lib/capitalizeFirstLetter";
 import { hyphenToSpace } from "../lib/hyphenToSpace";
-import LoadingSpinner from "./LoadingSpinner";
+
 import {
   ContainerStyles,
   GenderNameStyles,
@@ -25,11 +24,9 @@ export default function MegaEvolutions({
     (pokemon: any) => pokemon.id !== id
   );
 
-  
   return (
     <div>
       {megaEvolutions.map((version: any) => {
-        
         <ContainerStyles key={version.id}>
           <SinglePokemonStyles>
             <GenderNameStyles>
