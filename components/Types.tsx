@@ -8,17 +8,19 @@ export interface TypeInterface {
 }
 
 export interface Types {
-  types: TypeInterface
+  types: TypeInterface;
 }
 export default function Types({ types }: any) {
-  
+
   return (
     <TypesStyles>
-      {types.map((type: TypeInterface) => {
-        <Link key={type.id} href={`/type/${type.id}`} passHref>
-          <TypeStyles color={type.name}>{type.name}</TypeStyles>
-        </Link>;
-      })}
+      <>
+        {types.map((type: any) => (
+          <Link key={type.type.id} href={`/type/${type.type.id}`} passHref>
+            <TypeStyles color={type.type.name}>{type.type.name}</TypeStyles>
+          </Link>
+        ))}
+      </>
     </TypesStyles>
   );
 }

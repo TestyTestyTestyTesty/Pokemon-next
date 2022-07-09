@@ -44,7 +44,8 @@ export default function PokemonDescription({
         <TitleStyles>
           {hyphenToSpace(capitalizeFirstLetter(name))} #{IndexNumber(id)}
         </TitleStyles>
-        {/**/}<Types types={types} />
+
+        <Types types={types} />
       </TopWrapperStyles>
       <PokemonShinyDifference id={id} name={name} genderDiff={genderDiff} />
       <MegaEvolutions id={id} evolutionChain={evolutionChain} />

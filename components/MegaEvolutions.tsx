@@ -26,7 +26,7 @@ export default function MegaEvolutions({
 
   return (
     <div>
-      {megaEvolutions.map((version: any) => {
+      {megaEvolutions.map((version: any) => (
         <ContainerStyles key={version.id}>
           <SinglePokemonStyles>
             <GenderNameStyles>
@@ -54,8 +54,8 @@ export default function MegaEvolutions({
               </VersionStyles>
             </SinglePokemonWrapperStyles>
           </SinglePokemonStyles>
-        </ContainerStyles>;
-      })}
+        </ContainerStyles>
+      ))}
     </div>
   );
 }
