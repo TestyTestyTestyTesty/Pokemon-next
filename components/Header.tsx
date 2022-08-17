@@ -3,6 +3,7 @@ import Image from "next/image";
 import { HeaderStyles, LinkStyles } from "./styles/Header.styled";
 import Link from "next/link";
 import ThemeToggler from "./ThemeToggler";
+import SearchForm from "./SearchForm";
 export default function header() {
   return (
     <HeaderStyles>
@@ -22,6 +23,12 @@ export default function header() {
           Favourites
         </LinkStyles>
       </Link>
+      <Link href={'/search'} passHref>
+        <LinkStyles>
+          Search
+        </LinkStyles>
+      </Link>
+ 
     </HeaderStyles>
   );
 }

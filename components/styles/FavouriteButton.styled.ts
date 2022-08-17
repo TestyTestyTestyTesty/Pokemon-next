@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
-export const FavouriteButtonStyles = styled.button`
-  background: yellow;
-  color: black;
-  padding: 5px 10px;
-  text-align: center;
-  cursor:pointer;
-  &:disabled{
-    background: red;
-  }
+export const ImageStyles = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 10px;
 `;

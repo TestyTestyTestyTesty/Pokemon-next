@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    &__num {
+        transition: 0.3s;
+        margin: 0 5px;
+        a {
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+        }
+        &:hover {
+            background: #304797;
+            color: white;
+        }
+        &--disabled {
+            a {
+                cursor: not-allowed;
+            }
+            &:hover {
+                background: none;
+                color: black;
+            }
+        }
+        &--active {
+            background: #304797;
+            color: white;
+        }
+    }
+}
