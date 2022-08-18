@@ -4,7 +4,6 @@ import FavouriteEmptyPage from "../components/FavouriteEmptyPage";
 import LoadingSpinner from "../components/LoadingSpinner";
 import PokemonList from "../components/PokemonList";
 import { PokemonFavContext } from "../contexts/PokemonFavContext";
-import { TitleStyles } from "../components/styles/Favourite.styled";
 import Title from "../components/Title";
 
 const POKEMON_FAV_QUERY = gql`
