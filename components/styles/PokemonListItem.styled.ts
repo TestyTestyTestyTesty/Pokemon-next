@@ -10,7 +10,7 @@ export const PokemonListItemStyles = styled.div`
     cursor: pointer;
     transition: all 0.3s;
     &:hover {
-        background: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.05);
     }
     p {
         margin: 5px 0;

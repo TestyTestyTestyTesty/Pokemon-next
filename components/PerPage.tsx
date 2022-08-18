@@ -19,7 +19,7 @@ export default function PerPage() {
                 defaultValue={perPage}
                 onChange={(val) => perPageToggler(val)}
                 options={options}
-                placeholder="Select how many items to see"
+                placeholder="pagination"
             />
         </PerPageStyles>
     );

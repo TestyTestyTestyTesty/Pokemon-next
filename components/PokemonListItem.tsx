@@ -21,7 +21,7 @@ export default function PokemonListItem({
         ).then((res) => {
             res.ok ? setExists(true) : setExists(false);
         });
-    }, [exists]);
+    }, [exists, pokemon.id]);
 
     return (
         <PokemonListItemStyles key={pokemon.id}>

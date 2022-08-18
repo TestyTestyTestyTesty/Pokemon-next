@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import { reducer } from "./PokemonFavReducer";
 
 const initialState = {
@@ -21,6 +21,12 @@ interface ProviderProps {
 
 export const PokemonFavProvider = ({ children }: ProviderProps) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+    /*   useEffect(() => {
+        localStorage.setItem(
+            "favourites",
+            JSON.stringify(state.pokemonFavList)
+        );
+    }, [state.pokemonFavList]); */
     //actions
     const addPokemonToFavList = (pokemon: number) => {
         dispatch({ type: "ADD_POKEMON_TO_FAV", payload: pokemon });
