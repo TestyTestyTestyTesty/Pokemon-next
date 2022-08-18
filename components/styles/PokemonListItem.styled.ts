@@ -16,4 +16,10 @@ export const PokemonListItemStyles = styled.div`
         margin: 5px 0;
         color: ${(props) => props.theme.textColor};
     }
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 `;

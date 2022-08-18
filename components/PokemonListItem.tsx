@@ -27,7 +27,7 @@ export default function PokemonListItem({
         <PokemonListItemStyles key={pokemon.id}>
             <FavouriteButton id={pokemon.id} />
             <Link href={`/pokemon/${pokemon.id}`}>
-                <>
+                <div>
                     <Image
                         src={
                             exists
@@ -40,7 +40,7 @@ export default function PokemonListItem({
                     />
                     <p>{hyphenToSpace(capitalizeFirstLetter(pokemon.name))}</p>
                     <p>#{IndexNumber(pokemon.id)}</p>
-                </>
+                </div>
             </Link>
         </PokemonListItemStyles>
     );
