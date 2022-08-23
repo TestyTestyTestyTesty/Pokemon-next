@@ -11,6 +11,7 @@ export const ImageWrapperStyles = styled.div`
     display: flex;
     justify-content: center;
     & > span {
-        filter: brightness(0);
+        transition: all 0.3s;
+        filter: ${props => props.showImage ? "brightness(1)" : "brightness(0)"};
     }
 `;

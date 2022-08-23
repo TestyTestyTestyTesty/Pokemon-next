@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function GuessPokemonInput({ name }: { name: string }) {
-    const [pokemonName, setPokemonName] = useState(name);
+export default function GuessPokemonInput({ name, answerStatus, answerStatusHandler }: any) {
     const [inputText, setInputText] = useState("");
-
+    useEffect(()=>{
+        answerStatusHandler(false)
+    },[name])
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
     };
     const submitHandler = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        if (inputText.toLowerCase() === pokemonName) {
-            alert("brawo");
+        if (inputText.toLowerCase() === name) {
+            answerStatusHandler(true)
         } else {
             alert("probuj dalej");
         }
@@ -18,6 +19,7 @@ export default function GuessPokemonInput({ name }: { name: string }) {
     return (
         <form onSubmit={submitHandler}>
             <label>
+                {}
                 <input
                     type="text"
                     name="name"

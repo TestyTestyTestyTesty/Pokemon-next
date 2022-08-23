@@ -2,8 +2,9 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { ImageWrapperStyles } from "./styles/GuessPokemonImage.styled";
 
-export default function GuessPokemonImage({ id }: { id: number }) {
+export default function GuessPokemonImage({ id,answerStatus }: any) {
     const [exists, setExists] = useState(false);
+    
     useEffect(() => {
         fetch(
             `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
@@ -13,7 +14,7 @@ export default function GuessPokemonImage({ id }: { id: number }) {
         });
     }, [exists, id]);
     return (
-        <ImageWrapperStyles>
+        <ImageWrapperStyles showImage={answerStatus}>
             <Image
                 src={
                     exists
