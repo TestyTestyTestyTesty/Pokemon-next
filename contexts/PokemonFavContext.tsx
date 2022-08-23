@@ -1,45 +1,41 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import { reducer } from "./PokemonFavReducer";
 
-const initialState = {
-    pokemonFavList: [],
-    addPokemonToFavList: (pokemon: number) => {},
-    removePokemonFromFavList: (pokemon: number) => {},
+const initialState: any = {
+    favList: [],
 };
 
-export interface ContextProps {
-    pokemonFavList: number[];
-    addPokemonToFavList: (pokemon: number) => void;
-    removePokemonFromFavList: (pokemon: number) => void;
-}
-
-export const PokemonFavContext = createContext<ContextProps>(initialState);
+export const PokemonFavContext = createContext(initialState);
 
 interface ProviderProps {
     children: React.ReactNode;
 }
 
 export const PokemonFavProvider = ({ children }: ProviderProps) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    /*   useEffect(() => {
-        localStorage.setItem(
-            "favourites",
-            JSON.stringify(state.pokemonFavList)
-        );
-    }, [state.pokemonFavList]); */
-    //actions
-    const addPokemonToFavList = (pokemon: number) => {
-        dispatch({ type: "ADD_POKEMON_TO_FAV", payload: pokemon });
-    };
-    const removePokemonFromFavList = (pokemon: number) => {
-        dispatch({ type: "REMOVE_POKEMON_FROM_FAV", payload: pokemon });
-    };
+    const [state, dispatch] = useReducer(reducer, initialState, () => {
+        if (typeof window !== "undefined") {
+            const favsFromLocalStorage = localStorage.getItem("favourites");
+            const parsedFavs = JSON.parse(favsFromLocalStorage);
+            if (parsedFavs.length) {
+                return {
+                    ...initialState,
+                    favList: parsedFavs,
+                };
+            } else {
+                initialState;
+            }
+        }
+
+        return initialState;
+    });
+    useEffect(() => {
+        localStorage.setItem("favourites", JSON.stringify(state.favList));
+    }, [state]);
     return (
         <PokemonFavContext.Provider
             value={{
-                pokemonFavList: state.pokemonFavList,
-                addPokemonToFavList,
-                removePokemonFromFavList,
+                state,
+                dispatch,
             }}
         >
             {children}

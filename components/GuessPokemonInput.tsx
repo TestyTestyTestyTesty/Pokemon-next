@@ -32,6 +32,6 @@ export default function GuessPokemonInput({ name, answerStatus, answerStatusHand
                 value="Check"
                 disabled={inputText.length < 1}
             />
-        </form>
+        </FormStyles>
     );
 }
