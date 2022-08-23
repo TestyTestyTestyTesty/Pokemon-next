@@ -4,8 +4,10 @@ import { reducer } from "./PokemonFavReducer";
 const initialState: any = {
     favList: [],
 };
-
-export const PokemonFavContext = createContext(initialState);
+export interface ContextProps {
+    favList: number[];
+}
+export const PokemonFavContext = createContext<any>(initialState);
 
 interface ProviderProps {
     children: React.ReactNode;
@@ -14,12 +16,13 @@ interface ProviderProps {
 export const PokemonFavProvider = ({ children }: ProviderProps) => {
     const [state, dispatch] = useReducer(reducer, initialState, () => {
         if (typeof window !== "undefined") {
-            const favsFromLocalStorage = localStorage.getItem("favourites");
-            const parsedFavs = JSON.parse(favsFromLocalStorage);
-            if (parsedFavs.length) {
+            const favsFromLocalStorage = JSON.parse(
+                localStorage.getItem("favourites") || ""
+            );
+            if (favsFromLocalStorage.length) {
                 return {
                     ...initialState,
-                    favList: parsedFavs,
+                    favList: favsFromLocalStorage,
                 };
             } else {
                 initialState;

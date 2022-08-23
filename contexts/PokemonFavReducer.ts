@@ -2,6 +2,9 @@ interface Action {
     type: string;
     payload: number;
 }
+interface State {
+    favlist: number[];
+}
 export const reducer = (state: any, action: Action) => {
     console.log(state);
 
@@ -15,7 +18,7 @@ export const reducer = (state: any, action: Action) => {
             return {
                 ...state,
                 favList: state.favList.filter(
-                    (pokemon) => pokemon !== action.payload
+                    (pokemon: number) => pokemon !== action.payload
                 ),
             };
         default:

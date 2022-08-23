@@ -1,6 +1,8 @@
 import styled from "styled-components";
-
-export const ImageWrapperStyles = styled.div`
+type Props = {
+    showImage: Boolean;
+};
+export const ImageWrapperStyles = styled.div<Props>`
     margin: 20px 0 auto;
     background: url("/assets/guessBg.jpg");
     background-size: contain;
@@ -12,6 +14,7 @@ export const ImageWrapperStyles = styled.div`
     justify-content: center;
     & > span {
         transition: all 0.3s;
-        filter: ${props => props.showImage ? "brightness(1)" : "brightness(0)"};
+        filter: ${(props) =>
+            props.showImage ? "brightness(1)" : "brightness(0)"};
     }
 `;

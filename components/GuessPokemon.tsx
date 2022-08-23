@@ -23,15 +23,17 @@ export default function GuessPokemon() {
     const [pokemonId, setPokemonId] = useState(null);
     const [answerStatus, setAnswerStatus] = useState(false);
     const [getPokemon, { called, loading, data }] = useLazyQuery(
-        POKEMON_DETAILS_QUERY, {
-        onCompleted: (data) => {
-            setPokemonName(data.pokemon[0].name)
-            setPokemonId(data.pokemon[0].id)
+        POKEMON_DETAILS_QUERY,
+        {
+            onCompleted: (data) => {
+                setPokemonName(data.pokemon[0].name);
+                setPokemonId(data.pokemon[0].id);
+            },
         }
-    });
-    const answerStatusHandler = (bool) => {
-        setAnswerStatus(bool)
-    }
+    );
+    const answerStatusHandler = (bool: boolean) => {
+        setAnswerStatus(bool);
+    };
     const getPokemonHandler = () => {
         const randomId = generateRandomNumber(1, pokemonSum);
         getPokemon({
@@ -39,7 +41,6 @@ export default function GuessPokemon() {
                 id: randomId,
             },
         });
-
     };
     if (loading) return <LoadingSpinner />;
     return (
@@ -49,8 +50,15 @@ export default function GuessPokemon() {
             </GuessPokemonButton>
             {data?.pokemon?.length > 0 && (
                 <>
-                    <GuessPokemonImage id={pokemonId} answerStatus={answerStatus}/>
-                    <GuessPokemonInput name={pokemonName} answerStatus={answerStatus} answerStatusHandler={answerStatusHandler} />
+                    <GuessPokemonImage
+                        id={pokemonId}
+                        answerStatus={answerStatus}
+                    />
+                    <GuessPokemonInput
+                        name={pokemonName}
+                        answerStatus={answerStatus}
+                        answerStatusHandler={answerStatusHandler}
+                    />
                 </>
             )}
         </>
