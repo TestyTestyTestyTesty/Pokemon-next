@@ -1,23 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { FormStyles } from "./styles/GuessPokemonInput.styled";
 
-export default function GuessPokemonInput({ name, answerStatus, answerStatusHandler }: any) {
+export default function GuessPokemonInput({
+    name,
+    answerStatus,
+    answerStatusHandler,
+}: any) {
     const [inputText, setInputText] = useState("");
-    useEffect(()=>{
-        answerStatusHandler(false)
-    },[name])
+    useEffect(() => {
+        answerStatusHandler(false);
+    }, [name]);
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
     };
     const submitHandler = (e: React.SyntheticEvent) => {
         e.preventDefault();
         if (inputText.toLowerCase() === name) {
-            answerStatusHandler(true)
+            answerStatusHandler(true);
         } else {
             alert("probuj dalej");
         }
     };
     return (
-        <form onSubmit={submitHandler}>
+        <FormStyles onSubmit={submitHandler}>
             <label>
                 {}
                 <input
