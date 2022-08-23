@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FavouriteEmptyPage from "../components/FavouriteEmptyPage";
 import LoadingSpinner from "../components/LoadingSpinner";
 import PokemonList from "../components/PokemonList";
@@ -16,10 +16,10 @@ const POKEMON_FAV_QUERY = gql`
 `;
 export default function Favourites() {
     const FavContext = useContext(PokemonFavContext);
-    const { pokemonFavList }: any = FavContext;
+    const { state }: any = FavContext;
     const { data, error, loading } = useQuery(POKEMON_FAV_QUERY, {
         variables: {
-            pokemonArr: pokemonFavList,
+            pokemonArr: state.favList,
         },
     });
 
@@ -29,7 +29,7 @@ export default function Favourites() {
     return (
         <div>
             <Title>Favourite list</Title>
-            {pokemonFavList.length ? (
+            {state.favList.length ? (
                 <PokemonList data={data.pokemons} />
             ) : (
                 <FavouriteEmptyPage />

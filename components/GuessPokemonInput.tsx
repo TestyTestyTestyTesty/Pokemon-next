@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import {
+    FormStyles,
+    InputStyles,
+    SubmitStyles,
+} from "./styles/GuessPokemonInput.styled";
 
 export default function GuessPokemonInput({ name }: { name: string }) {
     const [pokemonName, setPokemonName] = useState(name);
@@ -16,20 +21,18 @@ export default function GuessPokemonInput({ name }: { name: string }) {
         }
     };
     return (
-        <form onSubmit={submitHandler}>
-            <label>
-                <input
-                    type="text"
-                    name="name"
-                    value={inputText}
-                    onChange={(e) => inputHandler(e)}
-                />
-            </label>
-            <input
+        <FormStyles onSubmit={submitHandler}>
+            <InputStyles
+                type="text"
+                name="name"
+                value={inputText}
+                onChange={(e) => inputHandler(e)}
+            />
+            <SubmitStyles
                 type="submit"
                 value="Check"
                 disabled={inputText.length < 1}
             />
-        </form>
+        </FormStyles>
     );
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { ImageWrapperStyles } from "./styles/GuessPokemonImage.styled";
 
-export default function GuessPokemonImage({ id }: { id: number }) {
+export default function GuessPokemonImage({ id, filter }: { id: number }) {
     const [exists, setExists] = useState(false);
     useEffect(() => {
         fetch(
@@ -13,7 +13,7 @@ export default function GuessPokemonImage({ id }: { id: number }) {
         });
     }, [exists, id]);
     return (
-        <ImageWrapperStyles>
+        <ImageWrapperStyles filter>
             <Image
                 src={
                     exists

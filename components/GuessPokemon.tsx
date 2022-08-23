@@ -20,6 +20,7 @@ const POKEMON_DETAILS_QUERY = gql`
 export default function GuessPokemon() {
     const { pokemonSum }: Props = useContext(PokemonSumContext);
     const [pokemonName, setPokemonName] = useState(null);
+    const [filter, setFilter] = useState(false);
     const [getPokemon, { called, loading, data }] = useLazyQuery(
         POKEMON_DETAILS_QUERY
     );
@@ -40,7 +41,10 @@ export default function GuessPokemon() {
             </GuessPokemonButton>
             {data?.pokemon?.length > 0 && (
                 <>
-                    <GuessPokemonImage id={data.pokemon[0].id} />
+                    <GuessPokemonImage
+                        id={data.pokemon[0].id}
+                        filter={filter}
+                    />
                     <GuessPokemonInput name={data.pokemon[0].name} />
                 </>
             )}
