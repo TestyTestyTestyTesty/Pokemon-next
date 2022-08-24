@@ -16,20 +16,19 @@ interface ProviderProps {
 export const PokemonFavProvider = ({ children }: ProviderProps) => {
     const [state, dispatch] = useReducer(reducer, initialState, () => {
         if (typeof window !== "undefined") {
-            const favsFromLocalStorage = JSON.parse(
-                localStorage.getItem("favourites") || ""
-            );
-            if (favsFromLocalStorage.length) {
+            const favsFromLocalStorage = localStorage.getItem("favourites");
+
+            if (favsFromLocalStorage && favsFromLocalStorage.length) {
+                const parsedFavs = JSON.parse(favsFromLocalStorage);
                 return {
                     ...initialState,
-                    favList: favsFromLocalStorage,
+                    favList: parsedFavs,
                 };
             } else {
                 initialState;
             }
-        } else {
-            return initialState;
         }
+        return initialState;
     });
     useEffect(() => {
         localStorage.setItem("favourites", JSON.stringify(state.favList));
