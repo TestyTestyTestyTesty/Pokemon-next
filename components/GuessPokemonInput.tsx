@@ -9,7 +9,7 @@ export default function GuessPokemonInput({
     const [inputText, setInputText] = useState("");
     useEffect(() => {
         answerStatusHandler(false);
-    }, [name]);
+    }, [name, answerStatusHandler]);
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(e.target.value);
     };
