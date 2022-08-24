@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ButtonStyles = styled.a`
     padding: 5px 10px;
-    border: 1px solid black;
-    color: black;
+    border: 1px solid ${(props) => props.theme.borderColor};
+    color: ${(props) => props.theme.textColor};
     margin: 5px;
     cursor: pointer;
     transition: all 0.3s;

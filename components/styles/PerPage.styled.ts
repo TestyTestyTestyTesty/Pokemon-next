@@ -5,7 +5,8 @@ export const PerPageStyles = styled.div`
     align-items: center;
     justify-content: flex-end;
     margin: 10px 0;
-    span {
-        margin-right: 10px;
-    }
+`;
+export const TextStyles = styled.span`
+    margin-right: 10px;
+    color: ${(props) => props.theme.textColor};
 `;

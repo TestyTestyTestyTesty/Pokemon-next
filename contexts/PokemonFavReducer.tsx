@@ -6,8 +6,6 @@ interface State {
     favlist: number[];
 }
 export const reducer = (state: any, action: Action) => {
-    console.log(state);
-
     switch (action.type) {
         case "ADD_POKEMON_TO_FAV":
             return {

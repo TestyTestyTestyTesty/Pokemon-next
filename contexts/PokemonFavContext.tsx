@@ -13,7 +13,7 @@ interface ProviderProps {
     children: React.ReactNode;
 }
 
-export const PokemonFavProvider = ({ children }: ProviderProps) => {
+export const PokemonFavContextProvider = ({ children }: ProviderProps) => {
     const [state, dispatch] = useReducer(reducer, initialState, () => {
         if (typeof window !== "undefined") {
             const favsFromLocalStorage = localStorage.getItem("favourites");

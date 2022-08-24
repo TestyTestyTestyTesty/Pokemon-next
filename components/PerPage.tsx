@@ -2,6 +2,7 @@ import React, { useContext, useId, useState } from "react";
 import { PaginationContext } from "../contexts/PaginationContext";
 import Select from "react-select";
 import { PerPageStyles } from "./styles/PerPage.styled";
+import { TextStyles } from "./styles/PerPage.styled";
 
 const options = [
     { value: 10, label: 10 },
@@ -13,7 +14,7 @@ export default function PerPage() {
 
     return (
         <PerPageStyles>
-            <span>Pagination:</span>
+            <TextStyles>Pagination:</TextStyles>
             <Select
                 instanceId={useId()}
                 defaultValue={perPage}

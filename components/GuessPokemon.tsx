@@ -25,7 +25,7 @@ export default function GuessPokemon() {
     const [getPokemon, { called, loading, data }] = useLazyQuery(
         POKEMON_DETAILS_QUERY,
         {
-            onCompleted: (data) => {
+            onCompleted: (data: any) => {
                 setPokemonName(data.pokemon[0].name);
                 setPokemonId(data.pokemon[0].id);
             },
@@ -42,6 +42,7 @@ export default function GuessPokemon() {
             },
         });
     };
+
     if (loading) return <LoadingSpinner />;
     return (
         <>
