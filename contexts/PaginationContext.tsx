@@ -4,10 +4,7 @@ interface props {
     label: number;
 }
 interface ThemeContext {
-    perPage: {
-        value: number;
-        label: number;
-    };
+    perPage: props;
     perPageToggler?: (number: props) => void;
 }
 

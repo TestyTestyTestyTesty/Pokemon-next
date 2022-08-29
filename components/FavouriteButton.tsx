@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { PokemonFavContext } from "../contexts/PokemonFavContext";
 import { ImageStyles } from "./styles/FavouriteButton.styled";
 
