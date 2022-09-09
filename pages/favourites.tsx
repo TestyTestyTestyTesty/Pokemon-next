@@ -16,6 +16,7 @@ const POKEMON_FAV_QUERY = gql`
 `;
 export default function Favourites() {
     const FavContext = useContext(PokemonFavContext);
+
     const { state }: any = FavContext;
     const { data, error, loading } = useQuery(POKEMON_FAV_QUERY, {
         variables: {

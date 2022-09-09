@@ -20,4 +20,8 @@ a {
 * {
   box-sizing: border-box;
 }
+#nprogress .bar {
+  height:5px;
+  background: red;
+}
 `;

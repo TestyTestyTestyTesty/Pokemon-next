@@ -11,6 +11,17 @@ import { PokemonFavContextProvider } from "../contexts/PokemonFavContext";
 import { PaginationContextProvider } from "../contexts/PaginationContext";
 import AppHead from "../components/AppHead";
 import ThemeWrapper from "../components/ThemeWrapper";
+import "nprogress/nprogress.css";
+import Nprogress from "nprogress";
+import Router from "next/router";
+
+//indicator of page transition
+Router.events.on("routeChangeStart", () => {
+    Nprogress.configure({ showSpinner: false });
+    Nprogress.start();
+});
+Router.events.on("routeChangeComplete", () => Nprogress.done());
+Router.events.on("routeChangeError", () => Nprogress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

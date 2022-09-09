@@ -5,11 +5,13 @@ import { PokemonInterface } from "../intefaces/pokemon";
 import PokemonListItem from "./PokemonListItem";
 import PerPage from "./PerPage";
 import { PaginationContext } from "../contexts/PaginationContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Pokemon {
     data: {
         id: number;
         name: string;
+        index?: number;
     }[];
 }
 
@@ -19,7 +21,6 @@ export default function PokemonList({ data }: any) {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     useEffect(() => {
-        // Fetch items from another resources.
         const endOffset = itemOffset + perPage.value;
         setCurrentItems(data.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(data.length / perPage.value));
@@ -29,20 +30,41 @@ export default function PokemonList({ data }: any) {
         const newOffset = (event.selected * perPage.value) % data.length;
         setItemOffset(newOffset);
     };
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                delayChildren: 0.5,
+            },
+        },
+    };
 
+    const item = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1 },
+    };
     return (
         <>
             <PerPage />
-            <PokemonListStyles>
+            <PokemonListStyles
+                as={motion.div}
+                variants={container}
+                initial="hidden"
+                animate="show"
+            >
                 {currentItems &&
-                    currentItems.map((pokemon: PokemonInterface) => {
-                        return (
-                            <PokemonListItem
-                                key={pokemon.id}
-                                pokemon={pokemon}
-                            />
-                        );
-                    })}
+                    currentItems.map(
+                        (pokemon: PokemonInterface, index: number) => {
+                            return (
+                                <PokemonListItem
+                                    key={pokemon.id}
+                                    pokemon={pokemon}
+                                    index={index}
+                                />
+                            );
+                        }
+                    )}
             </PokemonListStyles>
             {currentItems && perPage.value >= currentItems.length && (
                 <ReactPaginate
